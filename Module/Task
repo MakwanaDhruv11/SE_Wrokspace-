@@ -1,0 +1,9 @@
+#include <stdio.h>
+#include<conio.h>
+void main() 
+{
+    printf("a. Your Name     : Dhruv Makwana\n");
+    printf("b. Birth Date    : 05 August 2000\n");
+    printf("c. Your Age      : 25\n");
+    printf("d. Your Address  : Rajkot, Gujarat, India\n");
+}
