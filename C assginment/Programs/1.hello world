@@ -1,9 +1,0 @@
-// Write your first program to print "Hello, World!" and run it.
-
-#include<stdio.h>
-#include<conio.h>
-int main()
-{
-    printf("hello world");
-    return 0;
-}
