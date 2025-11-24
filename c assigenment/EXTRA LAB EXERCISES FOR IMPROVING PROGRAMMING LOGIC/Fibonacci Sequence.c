@@ -3,66 +3,67 @@
 //Challenge: Modify the program to calculate the Nth Fibonacci number using both iterative
 //and recursive methods. Compare their efficiency.
 
-// #include <stdio.h>
-// #include <conio.h>
+#include <stdio.h>
+#include <time.h>
 
-// int fibo(int n)
-// {
-//     if (n == 0)
-//         return 0;
-//     else if (n == 1)
-//         return 1;
-//     else
-//         return fibo(n-1) + fibo(n-2);
-// }
-
-// int main()
-// {
-//     int num;
-//     printf("Enter number for Fibonacci sequence:- ");
-//     scanf("%d", &num);//5
-
-//     for (int i = 0; i < num; i++)
-//     {
-//         printf("%d ", fibo(i));
-//     }
-
-//     return 0;
-// }
-
-
-
-
-//------------------------------------------------------------------
-
-
-int fibo(int n)
+//recursive-------------
+long long fib_rec(int n)
 {
-    int a = 0, b = 1, c;
-
-    if (n == 0)
-        return 0;   
-    else if (n == 1)
-        return 1;   
-
-    for (int i = 2; i <= n; i++)   
+   if(n == 0)
     {
-        c = a + b;
-        a = b;
-        b = c;
+        return 0;
     }
-    return b;  
+    else if(n == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return fib_rec(n-1) + fib_rec(n-2);
+    }
 }
-int main()
-{
-    int num;
-    printf("Enter number for Fibonacci sequence:- ");
-    scanf("%d", &num);//5
 
-    for (int i = 0; i < num; i++)
+//iterative------------
+long long fib_it(int n)
+{
+    if(n == 0)
+    return 0;
+
+    if(n == 1)
+    return 1; 
+
+    long long a = 0, b = 1;
+
+    for (int i = 2; i <= n; i++)
     {
-        printf("%d ", fibo(i));
+        long long c = a + b;
+                  a = b;
+                  b = c;
     }
+    return b;
+}
+
+int main(void)
+{
+    int n;
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+
+    // time recursive
+    clock_t r_start = clock();
+    long long r = fib_rec(n);
+    clock_t r_end = clock();
+    double r_sec = (double)(r_end - r_start) / CLOCKS_PER_SEC;
+
+    // time iterative
+    clock_t i_start = clock();
+    long long it = fib_it(n);
+    clock_t i_end = clock();
+    double i_sec = (double)(i_end - i_start) / CLOCKS_PER_SEC;
+
+    printf("\nRecursive F(%d) = %lld, time = %.6f s", n, r, r_sec);
+    printf("\nIterative F(%d) = %lld, time = %.6f s", n, it, i_sec);
 
     return 0;
 }
