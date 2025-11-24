@@ -2,75 +2,80 @@
 // a function. 
 // Challenge: Modify the program to check if a given string is a palindrome. 
 
-// #include<stdio.h>
-// #include<conio.h>
+#include<stdio.h>
 
-// int pali(int num)
-// {
-//     int revnum=0,rem=0;
-//     while(num>0)
-//     {
-//         rem = num % 10; 
-//         revnum = (revnum*10)+rem;
-//         num=num/10;   
-//     }
-//     return revnum;
-
-// }
-
-// int main()
-// {
-//     int num,revnum;
-
-//     printf("enter value To Check:- ");
-//     scanf("%d",&num);
-
-//     revnum=pali(num);
-
-//     if(num==revnum)
-//     printf("\ngiven number is palindrome");
-//     else
-//     printf("\nnumber is not palindrome");
-
-//     return 0;
-// }
-// ---------------------------------------------------------------------------------
-
-#include <stdio.h>
-#include <conio.h>
-#include <string.h>
-
-int Pali(char str[])
+int palinum(int n)
 {
-    char rev[100];
-    strcpy(rev, str);
-    strrev(rev);
-
-    if (strcmp(str, rev) == 0)
+    int rn=0;
+    while(n>0)
     {
-        return 1;
+        int rem = n % 10; 
+        rn = (rn*10)+rem;
+        n=n/10;   
     }
+    return rn;
+
+}
+
+
+int main()
+{
+    int n,rn;
+
+    printf("enter a value : ");
+    scanf("%d",&n);
+
+    rn=palinum(n);
+
+    if(n==rn)
+    printf("\ngiven number is palindrome");
     else
+    printf("\nnumber is not palindrome");
+
+    return 0;
+}
+
+
+
+/--------------------------------------------------------
+   
+    #include <stdio.h>
+    #include<string.h>
+
+
+void palinstr(char str[],char restr[])
+{
+    int i,j=0;
+   
+    for(i = 0; str[i] != '\0'; i++);
     {
-        return 0;
+    
+        while(i > 0)
+        {
+            i--;
+            restr[j]=str[i];
+            j++;
+        }
+        restr[j] = '\0';
     }
 }
 
 int main()
 {
-    char str[100];
-    int chk;
-
+    char str[100],restr[100];
+    
     printf("Enter a string: ");
     scanf("%s", str);
 
-    switch (Pali(str))
-    {
-    case 1:
-        printf("string is a Palindrome string.");
-        break;
-    case 0:
-        printf("string is not a Palindrome string.");
-        break;
-    }
+    palinstr(str,restr);
+
+    if(strcmp(str,restr)==0)
+    printf("\ngiven string is palindrome");
+    else
+    printf("\ngiven string is not palindrome");
+    
+
+    return 0;
 }
+
+
