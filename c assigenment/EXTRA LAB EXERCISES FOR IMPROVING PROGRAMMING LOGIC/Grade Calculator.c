@@ -7,28 +7,31 @@
 // • Use if-else or switch statements for the decision-making process. 
 
 
-#include<stdio.h>
-#include<conio.h>
-int main()
+#include <stdio.h>
+
+int main() 
 {
     int marks;
 
-    printf("enter your marks:-");
-    scanf("%d",&marks);
+    printf("Enter your marks: ");
+    scanf("%d", &marks);
 
-    if (Marks > 90)
+    if (marks > 90) 
     {
-        printf("Grade A ");
+        printf("Grade A\n");
     }
-    else if (Marks > 75 && <= 90)
+    else if (marks > 75 && marks <= 90) 
     {
-        printf("Grade B");
+        printf("Grade B\n");
     }
-    
-    
-
-
-
+    else if (marks > 50 && marks <= 75) 
+    {
+        printf("Grade C\n");
+    }
+    else 
+    {
+        printf("Grade D\n");
+    }
 
     return 0;
 }
