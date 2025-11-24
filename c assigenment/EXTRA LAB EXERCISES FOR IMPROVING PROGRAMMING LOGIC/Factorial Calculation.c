@@ -2,61 +2,31 @@
 // Challenge: Implement both an iterative and a recursive version of the factorial function and
 // compare their performance for large numbers.
 
-// #include<stdio.h>
-// #include<conio.h>
-// int fact(int num)
-// {
-//     if (num==1)
-//     {
-//         return 1;
-//     }
-//     else
-//     {
-//          return num*fact(num - 1);
-//     }
-// }
-// int main()
-// {
-//     int num;
-
-//     printf("Enter Number for actorial: ");
-//     scanf("%d", &num);
-//     printf("factorial of %d : ",num);
-//     for (int i = 1; i <=num; i++)
-//     {
-//         printf("%d x ",i);
-//     }
-
-//     printf("\n=%d", fact(num));
-
-// }
-
-//-------------------------------------------------------------------------------
-
 #include <stdio.h>
-#include <conio.h>
 
-int fact(int num)
+//iterative method
+
+int fact(int n) 
 {
-    int ans = 1;
-    for (int i = 1; i <= num; i++)
+    int ans = 1, i = n;
+
+    while (i > 0) 
     {
         ans = ans * i;
+        i--;
     }
     return ans;
 }
 
+
 int main()
 {
-    int num;
+    int n;
 
-    printf("Enter Number for actorial: ");
-    scanf("%d", &num);
-    printf("factorial of %d : ", num);
-    for (int i = 1; i <= num; i++)
-    {
-        printf("%d x ", i);
-    }
+    printf("Enter a num: ");
+    scanf("%d", &n);
 
-    printf("\n=%d", fact(num));
+    printf("\nFactorial : %d ", fact(n));
+
+    
 }
