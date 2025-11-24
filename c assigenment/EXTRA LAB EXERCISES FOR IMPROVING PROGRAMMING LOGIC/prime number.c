@@ -26,9 +26,9 @@ int main()
     {
         printf("%d is not prime",n);
     }
-    //------------------------------------------------------------------------------------------
-printf("\nprime numbers 1 to %d :-",n);
-printf("\n");
+  
+        printf("\nprime numbers 1 to %d :-",n);
+        printf("\n");
     for (j = 2; j < n; j++)
     {
         ccout=0;
