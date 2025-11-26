@@ -3,27 +3,51 @@
 // Challenge: Modify the program to also find the average of the numbers.
 
 #include <stdio.h>
-#include <conio.h>
-int main()
-{
-    int n;
-    printf("how many values you wnat to enter :- ");
+
+int main() {
+    int n, i;
+    int arr[100];   
+    int sum = 0;
+
+    printf("How many numbers do you want to enter? ");
     scanf("%d", &n);
-    int a[n],sum=0;
+
+    printf("Enter %d numbers:\n", n);
+    for (i = 0; i < n; i++) 
+    {
+        scanf("%d", &arr[i]);
+        sum = sum + arr[i];
+    }
+
+    printf("Sum of all numbers = %d\n", sum);
+
+    return 0;
+}
+
+
+/--------------challenge program-----------------
+
+    #include <stdio.h>
+
+int main() {
+    int n, i;
+    int arr[100];
+    int sum = 0;
     float avg;
 
-    for (int i = 0; i < n; i++)
-    {
-        printf("enter values %d:- ",i+1);
-        scanf("%d",&a[i]);
+    printf("How many numbers do you want to enter? ");
+    scanf("%d", &n);
+
+    printf("Enter %d numbers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
     }
-      for (int i = 0; i < n; i++)
-    {
-        sum+=a[i];        
-    }
-    avg=sum/n;
-    printf("sum of array is %d ",sum);
-    printf("\naverage of array is %f",avg);
+
+    avg = (float)sum / n;
+
+    printf("Sum = %d\n", sum);
+    printf("Average = %.2f\n", avg);
 
     return 0;
 }
