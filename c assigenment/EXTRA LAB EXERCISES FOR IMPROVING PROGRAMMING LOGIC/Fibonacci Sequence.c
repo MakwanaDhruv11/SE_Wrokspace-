@@ -4,66 +4,74 @@
 //and recursive methods. Compare their efficiency.
 
 #include <stdio.h>
-#include <time.h>
 
-//recursive-------------
-long long fib_rec(int n)
+int fib(int n) 
 {
-   if(n == 0)
-    {
+    if (n == 0)
         return 0;
-    }
-    else if(n == 1)
-    {
+    else if (n == 1)
         return 1;
-    }
     else
-    {
-        return fib_rec(n-1) + fib_rec(n-2);
-    }
+        return fib(n - 1) + fib(n - 2);
 }
 
-//iterative------------
-long long fib_it(int n)
-{
-    if(n == 0)
-    return 0;
+int main() {
+    int n, i;
 
-    if(n == 1)
-    return 1; 
+    printf("Enter how many terms you want: ");
+    scanf("%d", &n);
 
-    long long a = 0, b = 1;
-
-    for (int i = 2; i <= n; i++)
+    printf("Fibonacci Series:\n");
+    for (i = 0; i < n; i++) 
     {
-        long long c = a + b;
-                  a = b;
-                  b = c;
+        printf("%d ", fib(i));
     }
+
+    return 0;
+}
+
+
+/---------challenge------------
+   #include <stdio.h>
+
+int fibRec(int n) 
+{
+    if (n <= 1)
+        return n;
+    return fibRec(n - 1) + fibRec(n - 2);
+}
+
+int fibIter(int n) 
+{
+    int a = 0, b = 1, next, i;
+
+    if (n == 0)
+        return 0;
+
+    for (i = 2; i <= n; i++) 
+    {
+        next = a + b;
+        a = b;
+        b = next;
+    }
+
     return b;
 }
 
-int main(void)
+int main() 
 {
     int n;
-    printf("Enter n: ");
+
+    printf("Enter the value of N: ");
     scanf("%d", &n);
 
+    printf("Nth Fibonacci (Recursive) = %d\n", fibRec(n));
+    printf("Nth Fibonacci (Iterative) = %d\n", fibIter(n));
 
-    // time recursive
-    clock_t r_start = clock();
-    long long r = fib_rec(n);
-    clock_t r_end = clock();
-    double r_sec = (double)(r_end - r_start) / CLOCKS_PER_SEC;
-
-    // time iterative
-    clock_t i_start = clock();
-    long long it = fib_it(n);
-    clock_t i_end = clock();
-    double i_sec = (double)(i_end - i_start) / CLOCKS_PER_SEC;
-
-    printf("\nRecursive F(%d) = %lld, time = %.6f s", n, r, r_sec);
-    printf("\nIterative F(%d) = %lld, time = %.6f s", n, it, i_sec);
+  
+    printf("\nNote:\n");
+    printf("- Recursive method is slower because it repeats calculations.\n");
+    printf("- Iterative method is faster and uses simple loops.\n");
 
     return 0;
 }
