@@ -2,30 +2,48 @@
 // using a while loop. 
 // Challenge: Extend the program to reverse the digits of the number.
 
-#include<stdio.h>
-#include<conio.h>
-int main()
+#include <stdio.h>
+
+int main() {
+    int num, digit, sum = 0;
+
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    int temp = num;
+
+    while (temp != 0) {
+        digit = temp % 10;
+        sum += digit;
+        temp = temp / 10;
+    }
+
+    printf("Sum of digits of %d = %d\n", num, sum);
+
+    return 0;
+}
+
+/-----------challenge program-----------
+    
+#include <stdio.h>
+
+int main() 
 {
-    int num,sum=0,ndigit=0,rev=0,digit=0,tmp;
+    int num, digit, reversed = 0;
 
-    printf("enter number for sum");
-    scanf("%d",&num);
-    tmp=num;
-   while (num>0)
-   {
-    ndigit=num%10;
-    sum=sum+ndigit;
-    num=num/10;
-   }
-   printf("sum of digit is = %d",sum);
+    printf("Enter an integer: ");
+    scanf("%d", &num);
 
- while (tmp>0)
-   {
-    digit=tmp%10;
-    rev=rev*10+digit;
-    tmp=tmp/10;
-   }
- printf("\nreverse of digit is = %d",rev);
+    int temp = num;
 
-return 0;
+    while (temp != 0) 
+    {
+        digit = temp % 10;
+        reversed = reversed * 10 + digit;
+        temp = temp / 10;
+    }
+
+    printf("Reversed number = %d\n", reversed);
+
+    return 0;
 }
