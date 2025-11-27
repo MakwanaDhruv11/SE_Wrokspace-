@@ -2,44 +2,81 @@
 // consonants in the string.
 // Challenge: Extend the program to also count digits and special characters.
 #include <stdio.h>
-#include <conio.h>
-#include<string.h>
-int main()
-{
-    char str[100];
-    int count = 0, Vowels = 0,digit=0,special=0,Consonant=0;
 
-    printf("enter string:- ");
-    scanf("%s",&str);
+int main() {
+    char str[200];
+    int i;
+    int vowels = 0, consonants = 0;
 
-    while (str[count] != '\0')
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    for (i = 0; str[i] != '\0'; i++) {
+        char ch = str[i];
+
+        if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
+
+            // Convert uppercase to lowercase
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = ch + 32;
+            }
+
+            if (ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+                vowels++;
+            else
+                consonants++;
+        }
+    }
+
+    printf("Vowels: %d\n", vowels);
+    printf("Consonants: %d\n", consonants);
+
+    return 0;
+}
+
+
+/-----------challenge program-----------------
+    #include <stdio.h>
+
+int main() {
+    char str[200];
+    int i;
+    int vowels = 0, consonants = 0, digits = 0, special = 0;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    for (i = 0; str[i] != '\0'; i++) 
     {
-        char st = str [count];
-        if (st == 'a' || st == 'e' || st == 'i' || st == 'o' || st == 'u')
+        char ch = str[i];
+
+       
+        if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) 
         {
-            Vowels++;
+
+            
+            if (ch >= 'A' && ch <= 'Z')
+                ch = ch + 32;
+
+            if (ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+                vowels++;
+            else
+                consonants++;
         }
-        else if(st >= '0' && st<='9')
+        else if (ch >= '0' && ch <= '9') 
         {
-         digit++;
+            digits++;
         }
-         else if (st >= 'a' && st <= 'z')
-        {
-            Consonant++;
-        }
-        else
-        {
+        else if (ch != ' ' && ch != '\n') 
+        {  
             special++;
         }
-        count++;
     }
-   
-    
-          
-    printf("\nVowels : %d ",Vowels);
-    printf("\nConsonant : %d ",Consonant);
-    printf("\nSpecial : %d ",special);
-    printf("\nDigit : %d ",digit);
+
+    printf("Vowels: %d\n", vowels);
+    printf("Consonants: %d\n", consonants);
+    printf("Digits: %d\n", digits);
+    printf("Special Characters: %d\n", special);
 
     return 0;
 }
