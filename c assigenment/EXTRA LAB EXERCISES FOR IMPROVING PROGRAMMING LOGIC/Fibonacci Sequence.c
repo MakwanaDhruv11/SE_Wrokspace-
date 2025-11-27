@@ -31,7 +31,7 @@ int main() {
 }
 
 
-/---------challenge------------
+/---------------challenge program------------------
    #include <stdio.h>
 
 int fibRec(int n) 
