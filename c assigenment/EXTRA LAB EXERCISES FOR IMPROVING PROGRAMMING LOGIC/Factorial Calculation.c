@@ -4,56 +4,92 @@
 
 #include <stdio.h>
 
-//iterative method
-
-int fact(int n) 
+long long factorial(int n) 
 {
-    int ans = 1, i = n;
-
-    while (i > 0) 
+    long long f = 1;
+    for (int i = 1; i <= n; i++) 
     {
-        ans = ans * i;
-        i--;
+        f = f * i;
     }
-    return ans;
+    return f;
 }
 
-
-int main()
+int main() 
 {
-    int n;
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
 
-    printf("Enter a num: ");
-    scanf("%d", &n);
+    if (num < 0) 
+    {
+        printf("Factorial of a negative number is not possible.\n");
+        return 0;
+    }
 
-    printf("\nFactorial : %d ", fact(n));
+    long long ans = factorial(num);
+    printf("Factorial of %d is %lld\n", num, ans);
 
-    
+    return 0;
 }
 
-//recursive method
 
+
+
+/----------challenge program----------------
 
 #include <stdio.h>
+#include <time.h>
 
-int fact(int n) 
+unsigned long long fact_iter(int n) 
 {
-    if(n == 1)
-    return 1;
-    else
-    return n * fact(n-1);
+    unsigned long long f = 1;
+    for (int i = 1; i <= n; i++) 
+    {
+        f = f * i;
+    }
+    return f;
 }
 
+unsigned long long fact_rec(int n) 
+{
+    if (n <= 1)
+        return 1;
+    return n * fact_rec(n - 1);
+}
 
-int main()
+int main() 
 {
     int n;
+    clock_t start, end;
+    double time_iter, time_rec;
 
-    printf("Enter Any Number: ");
+    printf("Enter a number: ");
     scanf("%d", &n);
 
-    printf("\nFactorial : %d", fact(n));
+    if (n < 0) 
+    {
+        printf("Factorial of a negative number is not defined.\n");
+        return 0;
+    }
 
-    
+    // Iterative timing
+    start = clock();
+    unsigned long long ires = fact_iter(n);
+    end = clock();
+    time_iter = (double)(end - start) / CLOCKS_PER_SEC;
+
+    // Recursive timing
+    start = clock();
+    unsigned long long rres = fact_rec(n);
+    end = clock();
+    time_rec = (double)(end - start) / CLOCKS_PER_SEC;
+
+    printf("\nIterative Result : %llu", ires);
+    printf("\nTime (Iterative) : %f seconds\n", time_iter);
+
+    printf("\nRecursive Result : %llu", rres);
+    printf("\nTime (Recursive) : %f seconds\n", time_rec);
+
+    return 0;
 }
 
