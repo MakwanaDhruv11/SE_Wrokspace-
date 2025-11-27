@@ -1,3 +1,8 @@
+Write a C program that checks whether a given number is an Armstrong number or not (e.g.,
+153 = 1^3 + 5^3 + 3^3).
+• Challenge: Write a program to find all Armstrong numbers between 1 and 1000.
+    
+    
 #include<stdio.h>
 #include<math.h>
 
